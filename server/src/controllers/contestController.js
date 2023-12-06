@@ -77,7 +77,7 @@ module.exports.getContestById = async (req, res, next) => {
               },
             },
             {
-              model: db.Ratings,
+              model: db.Rating,
               required: false,
               where: { userId: req.tokenData.userId },
               attributes: { exclude: ['userId', 'offerId'] },

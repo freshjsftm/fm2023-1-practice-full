@@ -78,7 +78,7 @@ module.exports.changeMark = async (req, res, next) => {
       { isolationLevel: db.Sequelize.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED });
     const query = getQuery(offerId, userId, mark, isFirst, transaction);
     await query();
-    const offersArray = await db.Ratings.findAll({
+    const offersArray = await db.Rating.findAll({
       include: [
         {
           model: db.Offer,
