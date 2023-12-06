@@ -124,7 +124,7 @@ module.exports.updateContest = async (req, res, next) => {
 
 module.exports.setNewOffer = async (req, res, next) => {
   const obj = {};
-  if (req.body.contestType === CONSTANTS.LOGO_CONTEST) {
+  if (req.body.contestType === CONSTANTS.CONTEST_TYPES.LOGO) {
     obj.fileName = req.file.filename;
     obj.originalFileName = req.file.originalname;
   } else {
@@ -157,10 +157,10 @@ const resolveOffer = async (
   contestId, creatorId, orderId, offerId, priority, transaction) => {
   const finishedContest = await contestQueries.updateContestStatus({
     status: db.sequelize.literal(`   CASE
-            WHEN "id"=${ contestId }  AND "orderId"='${ orderId }' THEN '${ CONSTANTS.CONTEST_STATUS_FINISHED }'
+            WHEN "id"=${ contestId }  AND "orderId"='${ orderId }' THEN '${ CONSTANTS.CONTEST_STATUSES.FINISHED }'
             WHEN "orderId"='${ orderId }' AND "priority"=${ priority +
-    1 }  THEN '${ CONSTANTS.CONTEST_STATUS_ACTIVE }'
-            ELSE '${ CONSTANTS.CONTEST_STATUS_PENDING }'
+    1 }  THEN '${ CONSTANTS.CONTEST_STATUSES.ACTIVE }'
+            ELSE '${ CONSTANTS.CONTEST_STATUSES.PENDING }'
             END
     `),
   }, { orderId }, transaction);

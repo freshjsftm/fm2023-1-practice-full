@@ -29,8 +29,8 @@ module.exports.canGetContest = async (req, res, next) => {
           id: req.headers.contestid,
           status: {
             [ db.Sequelize.Op.or ]: [
-              CONSTANTS.CONTEST_STATUS_ACTIVE,
-              CONSTANTS.CONTEST_STATUS_FINISHED,
+              CONSTANTS.CONTEST_STATUSES.ACTIVE,
+              CONSTANTS.CONTEST_STATUSES.FINISHED,
             ],
           },
         },
@@ -71,7 +71,7 @@ module.exports.canSendOffer = async (req, res, next) => {
       attributes: ['status'],
     });
     if (result.get({ plain: true }).status ===
-      CONSTANTS.CONTEST_STATUS_ACTIVE) {
+      CONSTANTS.CONTEST_STATUSES.ACTIVE) {
       next();
     } else {
       return next(new RightsError());
@@ -88,7 +88,7 @@ module.exports.onlyForCustomerWhoCreateContest = async (req, res, next) => {
       where: {
         userId: req.tokenData.userId,
         id: req.body.contestId,
-        status: CONSTANTS.CONTEST_STATUS_ACTIVE,
+        status: CONSTANTS.CONTEST_STATUSES.ACTIVE,
       },
     });
     if (!result) {
@@ -106,7 +106,7 @@ module.exports.canUpdateContest = async (req, res, next) => {
       where: {
         userId: req.tokenData.userId,
         id: req.body.contestId,
-        status: { [ db.Sequelize.Op.not ]: CONSTANTS.CONTEST_STATUS_FINISHED },
+        status: { [ db.Sequelize.Op.not ]: CONSTANTS.CONTEST_STATUSES.FINISHED },
       },
     });
     if (!result) {
