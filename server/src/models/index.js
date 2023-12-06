@@ -41,12 +41,12 @@ fs
 // db[ 'Users' ].hasMany(db[ 'Ratings' ],
 //   { foreignKey: 'userId', targetKey: 'id' });
 
-db[ 'Offers' ].belongsTo(db[ 'Users' ],
-  { foreignKey: 'userId', sourceKey: 'id' });
-db[ 'Offers' ].belongsTo(db[ 'Contests' ],
-  { foreignKey: 'contestId', sourceKey: 'id' });
-db[ 'Offers' ].hasOne(db[ 'Ratings' ],
-  { foreignKey: 'offerId', targetKey: 'id' });
+// db[ 'Offers' ].belongsTo(db[ 'Users' ],
+//   { foreignKey: 'userId', sourceKey: 'id' });
+// db[ 'Offers' ].belongsTo(db[ 'Contests' ],
+//   { foreignKey: 'contestId', sourceKey: 'id' });
+// db[ 'Offers' ].hasOne(db[ 'Ratings' ],
+//   { foreignKey: 'offerId', targetKey: 'id' });
 
 db[ 'Ratings' ].belongsTo(db[ 'Users' ],
   { foreignKey: 'userId', targetKey: 'id' });

@@ -81,7 +81,7 @@ module.exports.changeMark = async (req, res, next) => {
     const offersArray = await db.Ratings.findAll({
       include: [
         {
-          model: db.Offers,
+          model: db.Offer,
           required: true,
           where: { userId: creatorId },
         },
