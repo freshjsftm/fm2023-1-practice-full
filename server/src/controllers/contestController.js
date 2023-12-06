@@ -45,7 +45,7 @@ module.exports.getContestById = async (req, res, next) => {
       ],
       include: [
         {
-          model: db.Users,
+          model: db.User,
           required: true,
           attributes: {
             exclude: [
@@ -59,7 +59,7 @@ module.exports.getContestById = async (req, res, next) => {
         {
           model: db.Offers,
           required: false,
-          where: req.tokenData.role === CONSTANTS.CREATOR
+          where: req.tokenData.role === CONSTANTS.ROLES.CREATOR
             ? { userId: req.tokenData.userId }
             : {},
           attributes: { exclude: ['userId', 'contestId'] },

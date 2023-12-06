@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -24,17 +23,23 @@ fs
     db[ model.name ] = model;
   });
 
+  Object.keys(db).forEach(modelName => {
+    if (db[modelName].associate) {
+      db[modelName].associate(db);
+    }
+  });  
+
 db[ 'Contests' ].belongsTo(db[ 'Users' ],
   { foreignKey: 'userId', sourceKey: 'id' });
 db[ 'Contests' ].hasMany(db[ 'Offers' ],
   { foreignKey: 'contestId', targetKey: 'id' });
 
-db[ 'Users' ].hasMany(db[ 'Offers' ],
-  { foreignKey: 'userId', targetKey: 'id' });
-db[ 'Users' ].hasMany(db[ 'Contests' ],
-  { foreignKey: 'userId', targetKey: 'id' });
-db[ 'Users' ].hasMany(db[ 'Ratings' ],
-  { foreignKey: 'userId', targetKey: 'id' });
+// db[ 'Users' ].hasMany(db[ 'Offers' ],
+//   { foreignKey: 'userId', targetKey: 'id' });
+// db[ 'Users' ].hasMany(db[ 'Contests' ],
+//   { foreignKey: 'userId', targetKey: 'id' });
+// db[ 'Users' ].hasMany(db[ 'Ratings' ],
+//   { foreignKey: 'userId', targetKey: 'id' });
 
 db[ 'Offers' ].belongsTo(db[ 'Users' ],
   { foreignKey: 'userId', sourceKey: 'id' });
