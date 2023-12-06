@@ -1,4 +1,4 @@
-
+const { CONTEST_TYPES, CONTEST_STATUSES } = require('../constants');
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Contests', {
@@ -10,7 +10,7 @@ module.exports = {
       },
       contestType: {
         allowNull: false,
-        type: Sequelize.ENUM('name', 'tagline', 'logo'),
+        type: Sequelize.ENUM(...Object.values(CONTEST_TYPES)),
       },
       fileName: {
         allowNull: true,
@@ -18,7 +18,7 @@ module.exports = {
       },
       originalFileName: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING,CONTEST_TYPES
       },
       title: {
         allowNull: true,
@@ -54,7 +54,7 @@ module.exports = {
       },
       status: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM(...Object.values(CONTEST_STATUSES)),
       },
       brandStyle: {
         allowNull: true,
@@ -63,11 +63,6 @@ module.exports = {
       prize: {
         allowNull: false,
         type: Sequelize.DECIMAL,
-      },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
       },
       priority: {
         allowNull: false,
@@ -84,6 +79,14 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },

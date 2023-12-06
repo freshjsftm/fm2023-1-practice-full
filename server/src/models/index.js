@@ -29,10 +29,10 @@ fs
     }
   });  
 
-db[ 'Contests' ].belongsTo(db[ 'Users' ],
-  { foreignKey: 'userId', sourceKey: 'id' });
-db[ 'Contests' ].hasMany(db[ 'Offers' ],
-  { foreignKey: 'contestId', targetKey: 'id' });
+// db[ 'Contests' ].belongsTo(db[ 'Users' ],
+//   { foreignKey: 'userId', sourceKey: 'id' });
+// db[ 'Contests' ].hasMany(db[ 'Offers' ],
+//   { foreignKey: 'contestId', targetKey: 'id' });
 
 // db[ 'Users' ].hasMany(db[ 'Offers' ],
 //   { foreignKey: 'userId', targetKey: 'id' });
