@@ -13,7 +13,7 @@ module.exports.dataForContest = async (req, res, next) => {
     console.log(req.body, characteristic1, characteristic2);
     const types = [characteristic1, characteristic2, 'industry'].filter(Boolean);
 
-    const characteristics = await db.Selects.findAll({
+    const characteristics = await db.Select.findAll({
       where: {
         type: {
           [ db.Sequelize.Op.or ]: types,
