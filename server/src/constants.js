@@ -3,6 +3,7 @@ module.exports = {
   ACCESS_TOKEN_TIME: '3m',
   REFRESH_JWT_SECRET: 'ertmnbdjsfhgshfewvdh54e54dhdfsg524ehsgefggrkd',
   REFRESH_TOKEN_TIME: '3d',
+  MAX_DEVICES_AMOUNT: 3,
   SALT_ROUNDS: 5,
   SQUADHELP_BANK_NUMBER: '4564654564564564',
   SQUADHELP_BANK_NAME: 'SquadHelp',
