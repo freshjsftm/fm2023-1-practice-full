@@ -23,11 +23,11 @@ const createToken = (payload, { secret, time }) => {
 };
 
 module.exports.createTokenPair = async payload => ({
-  accessToken: await createToken(payload, {
+  access: await createToken(payload, {
     secret: ACCESS_JWT_SECRET,
     time: ACCESS_TOKEN_TIME,
   }),
-  refreshToken: await createToken(payload, {
+  refresh: await createToken(payload, {
     secret: REFRESH_JWT_SECRET,
     time: REFRESH_TOKEN_TIME,
   }),

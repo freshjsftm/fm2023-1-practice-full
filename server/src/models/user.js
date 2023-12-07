@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Offer, { foreignKey: 'userId', targetKey: 'id' });
       User.hasMany(models.Contest, { foreignKey: 'userId', targetKey: 'id' });
       User.hasMany(models.Rating, { foreignKey: 'userId', targetKey: 'id' });
+      User.hasMany(models.RefreshToken, {
+        foreignKey: 'userId',
+        targetKey: 'id',
+      });
     }
     async comparePassword (password) {
       return await bcrypt.compare(password, this.getDataValue('password'));
