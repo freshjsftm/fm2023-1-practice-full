@@ -32,3 +32,7 @@ module.exports.createTokenPair = async payload => ({
     time: REFRESH_TOKEN_TIME,
   }),
 });
+
+module.exports.verifyAccessToken = token => verifyJWT(token, ACCESS_JWT_SECRET);
+module.exports.verifyRefreshToken = token =>
+  verifyJWT(token, REFRESH_JWT_SECRET);
