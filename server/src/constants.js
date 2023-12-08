@@ -1,8 +1,8 @@
 module.exports = {
   ACCESS_JWT_SECRET: 'asdasdasd4as5d4as8d7a8sd4as65d4a8sd7asd4as56d4',
-  ACCESS_TOKEN_TIME: '3m',
+  ACCESS_TOKEN_TIME: '1m',
   REFRESH_JWT_SECRET: 'ertmnbdjsfhgshfewvdh54e54dhdfsg524ehsgefggrkd',
-  REFRESH_TOKEN_TIME: '3d',
+  REFRESH_TOKEN_TIME: '2m',
   MAX_DEVICES_AMOUNT: 3,
   SALT_ROUNDS: 5,
   SQUADHELP_BANK_NUMBER: '4564654564564564',

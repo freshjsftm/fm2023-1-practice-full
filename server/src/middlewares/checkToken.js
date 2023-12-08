@@ -11,6 +11,7 @@ module.exports.checkAuth = async (req, res, next) => {
     const {
       headers: { authorization },
     } = req;
+    // console.log('authorization---->', authorization);
     if (authorization) {
       const [, accessToken] = authorization.split(' ');
       const tokenData = await verifyAccessToken(accessToken);
@@ -18,7 +19,7 @@ module.exports.checkAuth = async (req, res, next) => {
       user.password = undefined;
       return res.status(200).send({ data: user });
     }
-    next(createHTTPError(401, 'Need token'));
+    return next(createHTTPError(401, 'Need token!!!'));
   } catch (err) {
     next(new TokenError());
   }
@@ -34,7 +35,7 @@ module.exports.checkAccessToken = async (req, res, next) => {
       req.tokenData = await verifyAccessToken(accessToken);
       return next();
     }
-    next(createHTTPError(401, 'Need token'));
+    return next(createHTTPError(401, 'Need token'));
   } catch (err) {
     next(new TokenError());
   }
@@ -46,7 +47,7 @@ module.exports.checkRefreshToken = async (req, res, next) => {
       body: { refreshToken },
     } = req;
     req.tokenData = await verifyRefreshToken(refreshToken);
-    next();
+    return next();
   } catch (err) {
     next(new TokenError());
   }

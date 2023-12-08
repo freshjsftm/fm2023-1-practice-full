@@ -41,7 +41,7 @@ httpClient.interceptors.response.use(
     return response;
   },
   err => {
-    //console.log(err)
+    console.log('err--->>>', err)
     if (
       err.response.status === 401 &&
       history.location.pathname !== '/login' &&
@@ -60,8 +60,9 @@ httpClient.interceptors.response.use(
       } = httpClient.post('/auth/refresh', { refreshToken });
       window.localStorage.setItem(CONTANTS.REFRESH_TOKEN, tokenPair.refresh);
       accessToken = tokenPair.access;
-      //err.config.headers['Authorization']=`Bearer ${accessToken}`;
-      //return axios.request(err.config);
+      return;
+      // err.config.headers['Authorization'] = `Bearer ${accessToken}`;
+      // return axios.request(err.config);
     }
     return Promise.reject(err);
   }
