@@ -116,7 +116,7 @@ const OfferBox = (props) => {
           <div className={styles.creativeInfoContainer}>
             <img
               src={
-                avatar === 'anon.png'
+                avatar === null
                   ? CONSTANTS.ANONYM_IMAGE_PATH
                   : `${CONSTANTS.publicURL}${avatar}`
               }

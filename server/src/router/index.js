@@ -3,7 +3,7 @@ const basicMiddlewares = require('../middlewares/basicMiddlewares');
 // const hashPass = require('../middlewares/hashPassMiddle');
 const userController = require('../controllers/userController');
 const contestController = require('../controllers/contestController');
-const { checkAccessToken } = require('../middlewares/checkToken');
+const checkToken = require('../middlewares/checkToken');
 const validators = require('../middlewares/validators');
 const chatController = require('../controllers/chatController');
 const upload = require('../utils/fileUpload');
@@ -23,7 +23,7 @@ router.use('/auth', authRouter);
 
 router.post('/getUser', checkToken.checkAuth);
 
-route.use(checkAccessToken);
+router.use(checkToken.checkAccessToken);
 
 router.post(
   '/dataForContest',
